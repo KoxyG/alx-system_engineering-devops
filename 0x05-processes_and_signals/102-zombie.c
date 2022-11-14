@@ -3,16 +3,16 @@
 #include <unistd.h>
 
 /**
- * infinite_while( - creates an infinite loop to make the program hang
+ * infinite_while - creates an infinite loop to make the program hang
  * Return: always 0
  */
 int infinite_while(void)
 {
-    while (1)
-    {
-        sleep(1);
-    }
-    return (0);
+	while (1)
+	{
+		sleep(1);
+	}
+	return (0);
 }
 
 /**
