@@ -11,7 +11,7 @@ if __name__ == "__main__":
     users = requests.get("https://jsonplaceholder.typicode.com/users").json()
     todos = requests.get("https://jsonplaceholder.typicode.com/todos").json()
 
-    todoAll = 0
+    todoAll = None
 
     for user in users:
         taskList = []
