@@ -1,28 +1,28 @@
 #!/usr/bin/python3
-"""Exporting data in Json format"""
-
+"""Exports data in the JSON format"""
 
 if __name__ == "__main__":
+
     import json
     import requests
     import sys
 
-    userID = sys.argv[1]
-    user = requests.get("https://jsonplacegolder.typicode.com/user/{}"
+    userId = sys.argv[1]
+    user = requests.get("https://jsonplaceholder.typicode.com/users/{}"
                         .format(userId))
-    todos = requests.get("https://jsonplaceholder.typicode.com/todos")
+    todos = requests.get('https://jsonplaceholder.typicode.com/todos')
     todos = todos.json()
 
     todoUser = {}
-    taskTodo = []
+    taskList = []
 
     for task in todos:
         if task.get('userId') == int(userId):
             taskDict = {"task": task.get('title'),
-                        "completed": task.get('complete'),
+                        "completed": task.get('completed'),
                         "username": user.json().get('username')}
-            taskTodo.append(taskDict)
-    todoUser[userId] = taskTodo
+            taskList.append(taskDict)
+    todoUser[userId] = taskList
 
     filename = userId + '.json'
     with open(filename, mode='w') as f:
